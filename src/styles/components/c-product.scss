@@ -1,0 +1,114 @@
+.component {
+	display: block;
+	max-width: 1216px;
+
+	margin: 0 auto;
+	& .boxes {
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		& figure {
+			max-width: 250px;
+			& figcaption {
+				text-align: center;
+				font-size: 0.8rem;
+				margin-bottom: 20px;
+			}
+		}
+		& .box:nth-child(n) {
+			color: red;
+		}
+		& .box:nth-child(2n) {
+			color: blue;
+		}
+		& .box:nth-child(3n) {
+			color: green;
+		}
+		& .box:nth-child(4n) {
+			color: pink;
+		}
+		& .box {
+			width: 100%;
+			padding: 21px;
+			margin-top: 25px;
+			& img {
+				transform: scale(1.05);
+				animation: hover_box_off 0.3s ease forwards;
+			}
+			& .button {
+				display: inline-block;
+				padding: 10px 30px;
+				background-color: #4a90e2;
+				color: white;
+				text-transform: uppercase;
+				text-decoration: none;
+				margin-top: 30px;
+				margin-bottom: 10px;
+				transition: background-color 0.3s;
+				&::after {
+					content: " \1F6D2";
+				}
+				&:hover {
+					background-color: #7db9fd;
+					transition: background-color 0.3s;
+				}
+			}
+			@include mobile {
+				width: 95%;
+			}
+			@include tablet {
+				width: 47.5%;
+			}
+			@include desktop {
+				display: flex;
+				flex-wrap: wrap;
+				width: 100%;
+				& .picture {
+					width: 22%;
+					margin-right: 2%;
+				}
+				& figcaption {
+					margin-bottom: 0;
+				}
+
+				& .description {
+					width: 76%;
+				}
+			}
+			&:hover {
+				& img {
+					transform: scale(1);
+					animation: hover_box_on 0.3s ease forwards;
+				}
+			}
+		}
+
+		& .box:nth-child(2n + 1) {
+			background-color: rgb(224, 224, 224);
+			border: 1px solid rgb(201, 201, 201);
+		}
+		& .box:nth-child(2n) {
+			background-color: rgb(240, 240, 240);
+			border: 1px solid rgb(201, 201, 201);
+		}
+	}
+}
+
+@keyframes hover_box_on {
+	0% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(1.05);
+	}
+}
+
+@keyframes hover_box_off {
+	0% {
+		transform: scale(1.05);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
